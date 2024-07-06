@@ -12,6 +12,6 @@ def blog_single(request , slug):
     cn=Post.objects.get(slug=slug)
     cn.counted_views += 1
     cn.save()
-    post = get_object_or_404(Post, slug=slug)  # Post.objects.get()
+    post = get_object_or_404(Post, published_date__lt=datetime.datetime.now() , status=1 ,slug=slug)  # Post.objects.get()
     context = {'post': post}
     return render(request, 'blog/blog-single.html', context)
