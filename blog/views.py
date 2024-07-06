@@ -5,7 +5,7 @@ from blog.models import Post
 
 # Create your views here.
 def blog_view(request):
-    posts = Post.objects.exclude(published_date__gt=datetime.date(2025, 1, 3))
+    posts = Post.objects.exclude(published_date__gt=datetime.datetime.now())
     context = {'posts': posts}
     return render(request,'blog/blog-home.html', context)
 def blog_single(request , slug):
