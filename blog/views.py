@@ -13,6 +13,5 @@ def blog_single(request , slug):
     cn.counted_views+=1
     cn.save()
     post = Post.objects.get(slug=slug)
-
     context = {'post':post}
     return render(request,'blog/blog-single.html',context)
